@@ -1,0 +1,90 @@
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --neon-orange: #ff6600;
+    --neon-glow: 0 0 10px #ff6600, 0 0 20px #ff6600;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 30px 0;
+}
+
+.logo img {
+    height: 50px;
+    filter: drop-shadow(0 0 5px var(--neon-orange)); /* Неоновий ефект лого */
+}
+
+.balance {
+    background: #252525;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+/* Сітка головних вкладок */
+.main-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-card {
+    height: 250px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.tab-card:hover {
+    border-color: var(--neon-orange);
+    box-shadow: var(--neon-glow);
+}
+
+.tab-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Нижня сітка категорій */
+.grid-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.grid-item {
+    height: 120px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    padding: 15px;
+    font-weight: bold;
+    border: 1px solid #222;
+}
+
+.grid-item:hover {
+    background: #252525;
+    border-color: #444;
+}
