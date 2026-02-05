@@ -1,6 +1,6 @@
 :root {
     --bg-black: #0a0a0a;
-    --card-gray: #1a1a1a;
+    --card-bg: #161616;
     --neon-orange: #ff6600;
     --white: #ffffff;
 }
@@ -12,105 +12,99 @@ body {
     color: var(--white);
     font-family: 'Inter', sans-serif;
     display: flex;
-    justify-content: center; /* Центруємо сайт на ПК */
+    justify-content: center;
     min-height: 100vh;
 }
 
-/* Обмежуємо ширину для ПК, на мобільних буде 100% */
-.app-wrapper {
+.app-container {
     width: 100%;
-    max-width: 480px; /* Стандартна ширина мобільного екрану */
+    max-width: 1000px; /* Оптимально для ПК */
     padding: 15px;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0 20px 0;
+    padding: 10px 0 25px 0;
 }
 
-.logo-box { display: flex; align-items: center; gap: 8px; }
-.logo-box img { height: 35px; filter: drop-shadow(0 0 5px var(--neon-orange)); }
-.logo-box span { font-weight: 900; font-size: 1.3rem; }
-.logo-box span span { color: var(--neon-orange); }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { height: 35px; filter: drop-shadow(0 0 5px var(--neon-orange)); }
+.logo span { font-weight: 900; font-size: 1.4rem; }
+.logo span span { color: var(--neon-orange); }
 
-.balance-pill {
-    background: #252525;
-    padding: 6px 14px;
+.balance {
+    background: #1e1e1e;
+    padding: 8px 16px;
     border-radius: 20px;
-    font-size: 0.9rem;
     font-weight: 700;
     border: 1px solid #333;
+    font-size: 0.9rem;
 }
-.balance-pill span { color: var(--neon-orange); }
 
-/* Головна картка з фіксованими пропорціями */
-.preview-box {
+/* Головна секція */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.display-card {
     width: 100%;
-    aspect-ratio: 1 / 1.1; /* Картка не буде розтягуватися як "ковбаса" */
-    background: var(--card-gray);
+    aspect-ratio: 1 / 1.1; /* Пропорції як на твоїх скрінах */
+    background: var(--card-bg);
     border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #222;
-    margin-bottom: 15px;
 }
 
-.preview-text {
-    font-size: 4rem;
+.display-card h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
     font-weight: 900;
     color: var(--neon-orange);
-    letter-spacing: -2px;
 }
 
-/* Кнопки перемикання */
-.tab-selector {
+/* Сітка кнопок 2х2 */
+.control-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 15px;
+    grid-template-columns: 1fr 1fr; /* 2 кнопки в ряд */
+    gap: 12px;
 }
 
-.tab-btn {
-    background: #252525;
-    color: #fff;
+.btn {
     border: none;
-    padding: 14px 0;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: 900;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    padding: 20px 0;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
 }
 
-.tab-btn.active {
-    background: #fff;
-    color: #000;
+.main-btn { background: #222; color: #fff; }
+.main-btn.active { background: #fff; color: #000; }
+
+.secondary-btn { background: #1a1a1a; color: #fff; border: 1px solid #333; }
+.neon-accent { 
+    border-color: var(--neon-orange); 
+    color: var(--neon-orange);
+    box-shadow: inset 0 0 10px rgba(255, 102, 0, 0.1);
 }
 
-/* Нижня сітка */
-.actions-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-}
-
-.grid-card {
-    background: var(--card-gray);
-    aspect-ratio: 1 / 1.1;
-    border-radius: 15px;
-    border: 1px solid #222;
-    display: flex;
-    align-items: flex-end;
-    padding: 10px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-align: center;
-}
-
-.neon-border {
-    border: 1.5px solid var(--neon-orange);
-    box-shadow: inset 0 0 10px rgba(255, 102, 0, 0.2);
+/* --- Адаптація для ПК (MacBook Pro) --- */
+@media (min-width: 800px) {
+    .main-content {
+        flex-direction: row; /* На ПК картка і кнопки поруч */
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+    
+    .preview-area { flex: 1.5; }
+    .control-grid { flex: 1; margin-top: 0; }
+    
+    .display-card { aspect-ratio: 16 / 10; } /* Широкий формат для ПК */
 }
