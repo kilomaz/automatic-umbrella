@@ -1,14 +1,14 @@
 :root {
-    --bg-black: #0a0a0a;
-    --card-bg: #161616;
-    --neon-orange: #ff6600;
+    --bg: #0a0a0a;
+    --card: #161616;
+    --neon: #ff6600;
     --white: #ffffff;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-black);
+    background-color: var(--bg);
     color: var(--white);
     font-family: 'Inter', sans-serif;
     display: flex;
@@ -18,7 +18,7 @@ body {
 
 .app-container {
     width: 100%;
-    max-width: 1000px; /* Оптимально для ПК */
+    max-width: 1100px; /* Оптимально для комп'ютера */
     padding: 15px;
 }
 
@@ -26,13 +26,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0 25px 0;
+    padding: 10px 0 20px 0;
 }
 
 .logo { display: flex; align-items: center; gap: 10px; }
-.logo img { height: 35px; filter: drop-shadow(0 0 5px var(--neon-orange)); }
+.logo img { height: 35px; filter: drop-shadow(0 0 5px var(--neon)); }
 .logo span { font-weight: 900; font-size: 1.4rem; }
-.logo span span { color: var(--neon-orange); }
+.logo span span { color: var(--neon); }
 
 .balance {
     background: #1e1e1e;
@@ -42,69 +42,72 @@ header {
     border: 1px solid #333;
     font-size: 0.9rem;
 }
+.balance span { color: var(--neon); }
 
-/* Головна секція */
-.main-content {
-    display: flex;
-    flex-direction: column;
+/* ГОЛОВНА СІТКА (ДВА ВЕЛИКИХ БЛОКИ) */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* На компі поруч */
     gap: 15px;
+    margin-bottom: 15px;
 }
 
-.display-card {
-    width: 100%;
-    aspect-ratio: 1 / 1.1; /* Пропорції як на твоїх скрінах */
-    background: var(--card-bg);
+.hero-card {
+    background: var(--card);
     border-radius: 25px;
+    aspect-ratio: 1 / 1.1; /* Тримаємо гарну пропорцію */
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #222;
-}
-
-.display-card h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 900;
-    color: var(--neon-orange);
-}
-
-/* Сітка кнопок 2х2 */
-.control-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 кнопки в ряд */
-    gap: 12px;
-}
-
-.btn {
-    border: none;
-    border-radius: 12px;
-    font-weight: 900;
-    font-size: 1rem;
-    padding: 20px 0;
-    cursor: pointer;
+    border: 1px solid #252525;
     transition: 0.3s;
+    cursor: pointer;
+}
+
+.hero-card:hover {
+    border-color: var(--neon);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.1);
+}
+
+.hero-card h1 {
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--neon);
     text-transform: uppercase;
 }
 
-.main-btn { background: #222; color: #fff; }
-.main-btn.active { background: #fff; color: #000; }
-
-.secondary-btn { background: #1a1a1a; color: #fff; border: 1px solid #333; }
-.neon-accent { 
-    border-color: var(--neon-orange); 
-    color: var(--neon-orange);
-    box-shadow: inset 0 0 10px rgba(255, 102, 0, 0.1);
+/* НИЖНІ КНОПКИ */
+.footer-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
-/* --- Адаптація для ПК (MacBook Pro) --- */
-@media (min-width: 800px) {
-    .main-content {
-        flex-direction: row; /* На ПК картка і кнопки поруч */
-        align-items: flex-start;
-        margin-top: 20px;
+.small-btn {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 18px 0;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.neon-btn {
+    border-color: var(--neon);
+    color: var(--neon);
+}
+
+/* --- МОБІЛЬНА ВЕРСІЯ --- */
+@media (max-width: 600px) {
+    .hero-grid {
+        grid-template-columns: 1fr; /* На телефоні один під одним */
     }
     
-    .preview-area { flex: 1.5; }
-    .control-grid { flex: 1; margin-top: 0; }
-    
-    .display-card { aspect-ratio: 16 / 10; } /* Широкий формат для ПК */
+    .hero-card {
+        aspect-ratio: 16 / 10; /* Робимо їх трішки ширшими на мобілці */
+    }
 }
