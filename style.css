@@ -1,11 +1,13 @@
 :root {
     --dark-bg: #0a0a0a;
-    --card-bg: #1e1e1e;
-    --button-bg: #333333;
+    --card-bg: #1a1a1a;
     --neon-orange: #ff6600;
-    --neon-shadow: 0 0 12px rgba(255, 102, 0, 0.6), 0 0 5px rgba(255, 102, 0, 0.4);
+    --neon-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
     --text-main: #ffffff;
-    --text-light: #cccccc;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -13,214 +15,104 @@ body {
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 0 20px;
+    padding: 10px; /* Відступи від країв екрану мобілки */
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
 }
 
-/* Header */
+/* Header - компактний для мобілок */
 header {
     width: 100%;
-    max-width: 1000px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 25px 0;
-    border-bottom: 1px solid #222; /* Легка розділяюча лінія */
-    margin-bottom: 30px;
+    gap: 15px;
+    padding: 15px 0;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .main-logo {
-    height: 40px;
-    filter: drop-shadow(0 0 8px var(--neon-orange));
-    vertical-align: middle;
+    height: 35px;
+    filter: drop-shadow(0 0 5px var(--neon-orange));
 }
 
 .brand-name {
     font-weight: 900;
-    font-size: 1.4rem;
-    margin-left: 10px;
-    letter-spacing: 1px;
-    color: var(--text-main);
+    font-size: 1.3rem;
 }
 
-.brand-name span {
-    color: var(--neon-orange);
-}
+.brand-name span { color: var(--neon-orange); }
 
+/* Кнопки Гайд/Бонуси в ряд */
 .header-nav {
     display: flex;
-    gap: 15px;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
 }
 
 .header-button {
     text-decoration: none;
-    color: var(--text-main);
-    background: var(--button-bg);
-    padding: 10px 20px;
+    color: #fff;
+    background: #2a2a2a;
+    padding: 12px 0;
+    width: 120px;
+    text-align: center;
     border-radius: 25px;
     font-weight: 700;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-    border: 1px solid #444;
-}
-
-.header-button:hover {
-    background: var(--neon-orange);
-    color: var(--dark-bg);
-    box-shadow: var(--neon-shadow);
-    border-color: var(--neon-orange);
+    font-size: 0.8rem;
+    border: 1px solid #333;
 }
 
 .primary-button {
     background: var(--neon-orange);
-    color: var(--dark-bg);
-    border-color: var(--neon-orange);
     box-shadow: var(--neon-shadow);
+    border: none;
 }
 
-.primary-button:hover {
-    background: #ff8533; /* Трохи світліше при наведенні */
-}
-
-
-/* Main Media Sections */
+/* Головні картки ФОТО / ВІДЕО */
 .main-media-sections {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    grid-template-columns: 1fr 1fr; /* Робимо 2 в ряд на мобілці */
+    gap: 10px;
     width: 100%;
-    max-width: 1000px;
-    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .media-card {
-    height: 280px; /* Висота великих карт */
     background: var(--card-bg);
-    border-radius: 20px;
-    position: relative;
-    border: 2px solid #333;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid #222;
+    aspect-ratio: 1 / 1.1; /* Робимо їх майже квадратними */
     display: flex;
-    align-items: flex-end; /* Вирівнювання тексту знизу */
-    justify-content: flex-start;
-    padding: 25px;
-}
-
-.media-card:hover {
-    border-color: var(--neon-orange);
-    box-shadow: var(--neon-shadow);
-    transform: translateY(-5px);
+    align-items: flex-end;
+    padding: 15px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .card-label {
-    font-size: 3rem; /* Великий текст для ФОТО/ВИДЕО */
+    color: #fff;
+    font-size: 1.2rem;
     font-weight: 900;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(0,0,0,0.8);
-    color: var(--text-main);
+    z-index: 2;
 }
 
-/* Additional Action Buttons */
-.additional-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2-4 кнопки в ряд */
-    gap: 15px;
-    width: 100%;
-    max-width: 1000px;
-    margin-bottom: 30px;
-}
-
-.action-button {
-    text-decoration: none;
-    color: var(--text-main);
-    background: var(--button-bg);
-    padding: 20px 25px;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-align: center;
-    border: 2px solid #444;
-    transition: all 0.2s ease;
-}
-
-.action-button:hover {
-    border-color: var(--neon-orange);
-    box-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
-    background: #2b2b2b;
-}
-
-/* Categories Grid */
+/* Нижня сітка категорій */
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Сітка 2-4 кнопки */
-    gap: 15px;
+    grid-template-columns: repeat(3, 1fr); /* 3 в ряд для економії місця */
+    gap: 8px;
     width: 100%;
-    max-width: 1000px;
-    margin-bottom: 50px;
+    margin-top: 15px;
 }
 
 .grid-button {
-    text-decoration: none;
-    color: var(--text-main);
-    background: var(--card-bg);
-    padding: 25px 20px;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-align: center;
-    border: 2px solid #333;
-    transition: all 0.2s ease;
-}
-
-.grid-button:hover {
-    border-color: var(--neon-orange);
-    box-shadow: 0 0 8px rgba(255, 102, 0, 0.2);
-    background: #252525;
-}
-
-.neon-active {
-    border-color: var(--neon-orange);
-    box-shadow: var(--neon-shadow);
-    background: #221200; /* Трохи темніший фон для активної */
-    color: var(--neon-orange);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .main-media-sections {
-        grid-template-columns: 1fr;
-    }
-    .additional-buttons, .categories-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .card-label {
-        font-size: 2.2rem;
-    }
-    header {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .header-nav {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .additional-buttons, .categories-grid {
-        grid-template-columns: 1fr;
-    }
-    .card-label {
-        font-size: 1.8rem;
-    }
-}
+    text-
