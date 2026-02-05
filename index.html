@@ -1,41 +1,48 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Hub | Neon Style</title>
+    <title>Мой Медиа Портал</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <div class="logo-container">
-            <img src="logo.png" alt="Logo" class="main-logo">
-            <span class="brand-name">MEDIA<span>HUB</span></span>
+            <img src="logo.png" alt="Логотип" class="main-logo">
+            <span class="brand-name">CLOTHOFF<span>.NET</span></span>
         </div>
-        <div class="user-info">
-            <div class="coins">💎 268</div>
-            <div class="menu-icon">☰</div>
+        <div class="header-nav">
+            <a href="#" class="header-button">ГАЙД</a>
+            <a href="#" class="header-button primary-button">БОНУСЫ</a>
         </div>
     </header>
 
     <main>
-        <div class="hero-sections">
-            <div class="main-card photo-card">
+        <section class="main-media-sections">
+            <div class="media-card large-card photo-card">
                 <div class="card-label">ФОТО</div>
             </div>
-            <div class="main-card video-card">
-                <div class="card-label">ВІДЕО</div>
+            <div class="media-card large-card video-card">
+                <div class="card-label">ВИДЕО</div>
             </div>
-        </div>
+        </section>
 
-        <div class="categories-grid">
-            <div class="mini-card">КОСТЮМИ</div>
-            <div class="mini-card">ЛОКАЦІЇ</div>
-            <div class="mini-card">ПОЗИ</div>
-            <div class="mini-card">КОЛЕКЦІЇ</div>
-        </div>
+        <section class="additional-buttons">
+            <a href="#" class="action-button">ФОТО</a>
+            <a href="#" class="action-button">ЗАМЕНА ЛИЦА</a>
+            <a href="#" class="action-button">БОНУСЫ</a>
+            <a href="#" class="action-button">ГАЙД</a>
+        </section>
+
+        <section class="categories-grid">
+            <a href="#" class="grid-button">КОЛЛЕКЦИЯ</a>
+            <a href="#" class="grid-button neon-active">ГЕНЕРАТОР</a>
+            <a href="#" class="grid-button">ПОЗЫ</a>
+            <a href="#" class="grid-button">КОСТЮМЫ</a>
+        </section>
     </main>
 
 </body>
