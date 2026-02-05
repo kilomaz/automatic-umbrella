@@ -1,118 +1,103 @@
 :root {
-    --dark-bg: #0a0a0a;
-    --card-bg: #1a1a1a;
-    --neon-orange: #ff6600;
-    --neon-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
-    --text-main: #ffffff;
+    --bg: #0a0a0a;
+    --card: #1a1a1a;
+    --neon: #ff6600;
+    --text: #ffffff;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--dark-bg);
-    color: var(--text-main);
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 10px; /* Відступи від країв екрану мобілки */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 15px;
 }
 
-/* Header - компактний для мобілок */
 header {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding: 15px 0;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-.logo-container {
+.logo {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.main-logo {
-    height: 35px;
-    filter: drop-shadow(0 0 5px var(--neon-orange));
-}
+.logo img { height: 40px; }
+.logo span { font-weight: 900; font-size: 1.5rem; }
+.logo span span { color: var(--neon); }
 
-.brand-name {
-    font-weight: 900;
-    font-size: 1.3rem;
-}
+.top-nav { display: flex; gap: 10px; }
 
-.brand-name span { color: var(--neon-orange); }
-
-/* Кнопки Гайд/Бонуси в ряд */
-.header-nav {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
-}
-
-.header-button {
+.btn-small {
     text-decoration: none;
     color: #fff;
     background: #2a2a2a;
-    padding: 12px 0;
-    width: 120px;
-    text-align: center;
-    border-radius: 25px;
+    padding: 10px 30px;
+    border-radius: 20px;
     font-weight: 700;
     font-size: 0.8rem;
-    border: 1px solid #333;
 }
 
-.primary-button {
-    background: var(--neon-orange);
-    box-shadow: var(--neon-shadow);
-    border: none;
+.btn-neon {
+    background: var(--neon);
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
 }
 
-/* Головні картки ФОТО / ВІДЕО */
-.main-media-sections {
+/* Сетка карточек */
+.main-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Робимо 2 в ряд на мобілці */
+    grid-template-columns: 1fr 1fr; /* 2 колонки всегда */
     gap: 10px;
-    width: 100%;
-    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-.media-card {
-    background: var(--card-bg);
+.card {
+    background: var(--card);
     border-radius: 15px;
     border: 1px solid #222;
-    aspect-ratio: 1 / 1.1; /* Робимо їх майже квадратними */
     display: flex;
     align-items: flex-end;
     padding: 15px;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
+    aspect-ratio: 1 / 1.1; /* Соотношение сторон, чтобы не были длинными */
 }
 
-.card-label {
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 900;
-    z-index: 2;
+.big-card {
+    /* Можно добавить фоновое фото через background-image: url('...'); */
 }
 
-/* Нижня сітка категорій */
-.categories-grid {
+.half-card {
+    aspect-ratio: 2 / 1; /* Кнопки Гайд и Бонусы пониже и шире */
+    justify-content: center;
+    align-items: center;
+}
+
+.label { font-size: 1.2rem; font-weight: 900; }
+.label-small { font-size: 1rem; font-weight: 700; }
+
+/* Нижняя сетка */
+.bottom-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 в ряд для економії місця */
+    grid-template-columns: repeat(3, 1fr); /* 3 в ряд */
     gap: 8px;
-    width: 100%;
-    margin-top: 15px;
 }
 
-.grid-button {
-    text-
+.mini-card {
+    background: var(--card);
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 15px 5px;
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.neon-border {
+    border-color: var(--neon);
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.2);
+}
