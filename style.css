@@ -11,10 +11,19 @@ body {
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
-    padding: 10px;
+    display: flex;
+    justify-content: center; /* Центруємо сайт на комп'ютері */
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Це обмеження, щоб на компі сайт не розтягувався на весь монітор */
+.app-container {
+    width: 100%;
+    max-width: 450px; /* Ідеальна ширина як у мобілки */
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 header {
@@ -22,74 +31,86 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5px;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .logo { display: flex; align-items: center; gap: 8px; }
-.logo img { height: 30px; filter: drop-shadow(0 0 5px var(--neon)); }
-.logo span { font-weight: 900; font-size: 1.1rem; }
+.logo img { height: 32px; filter: drop-shadow(0 0 5px var(--neon)); }
+.logo span { font-weight: 900; font-size: 1.2rem; }
 .logo span span { color: var(--neon); }
 
 .balance {
     background: #222;
-    padding: 5px 12px;
+    padding: 6px 12px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     border: 1px solid #333;
+    font-weight: 700;
 }
+.balance span { color: var(--neon); }
 
-/* Велика картка */
-.hero-section { width: 100%; margin-top: 10px; }
+/* Головна картка */
+.hero-section { width: 100%; }
 .main-card {
     width: 100%;
-    aspect-ratio: 1 / 1.1;
+    aspect-ratio: 1 / 1.2; /* Фіксована пропорція */
     background: var(--card);
-    border-radius: 20px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #222;
+    border: 1px solid #252525;
 }
-.main-card h1 { font-size: 3.5rem; font-weight: 900; color: var(--neon); }
+.main-card h1 { 
+    font-size: clamp(2.5rem, 10vw, 4rem); /* Розмір шрифту підлаштовується */
+    font-weight: 900; 
+    color: var(--neon); 
+}
 
 /* Кнопки під карткою */
 .selector-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 10px;
     width: 100%;
-    margin: 15px 0;
+    margin: 20px 0;
 }
 .select-btn {
     border: none;
-    padding: 12px 0;
-    border-radius: 8px;
+    padding: 14px 0;
+    border-radius: 10px;
     font-weight: 900;
     font-size: 0.8rem;
-    background: #333;
+    background: #252525;
     color: #fff;
     cursor: pointer;
+    transition: 0.2s;
 }
 .select-btn.active { background: #fff; color: #000; }
 
-/* Сітка категорій */
+/* Сітка знизу */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 10px;
     width: 100%;
 }
 .grid-item {
     background: var(--card);
-    border: 1px solid #222;
+    border: 1px solid #252525;
     aspect-ratio: 1 / 1.1;
-    border-radius: 12px;
+    border-radius: 14px;
     color: #fff;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 700;
     display: flex;
     align-items: flex-end;
-    padding: 10px;
+    justify-content: center;
+    padding: 12px 5px;
     text-align: center;
 }
-.neon-btn { border: 1.5px solid var(--neon); box-shadow: inset 0 0 10px rgba(255, 102, 0, 0.2); }
+.neon-btn { 
+    border: 1.5px solid var(--neon); 
+    box-shadow: inset 0 0 15px rgba(255, 102, 0, 0.15); 
+}
