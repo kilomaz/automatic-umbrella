@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PhotoNuder | AI</title>
+    <title>PhotoNuder | NeonCore</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <span>Photo<span>Nuder</span></span>
+            <span class="brand-font">Photo<span>Nuder</span></span>
             <div class="close-btn" onclick="toggleSidebar()">✕</div>
         </div>
         <nav class="sidebar-nav">
@@ -30,10 +30,10 @@
         <div class="popup-header">
             <div class="user-info-row">
                 <div class="avatar-large">
-                    <img src="https://ui-avatars.com/api/?name=User&background=ff6600&color=fff" alt="User">
+                    <img src="https://ui-avatars.com/api/?name=User&background=00f3ff&color=000" alt="User">
                 </div>
                 <div>
-                    <div class="user-name">User #9321</div>
+                    <div class="user-name brand-font">User #9321</div>
                     <div class="user-status">Free Account</div>
                 </div>
             </div>
@@ -54,13 +54,13 @@
                 </div>
                 <div class="logo">
                     <img src="logo.png" alt="Logo">
-                    <span>Photo<span>Nuder</span></span>
+                    <span class="brand-font">Photo<span>Nuder</span></span>
                 </div>
             </div>
             <div class="profile-btn" onclick="toggleProfile()">
                 <div class="balance-text">💎 0</div>
                 <div class="avatar-circle">
-                    <img src="https://ui-avatars.com/api/?name=User&background=333&color=fff" alt="User">
+                    <img src="https://ui-avatars.com/api/?name=User&background=00f3ff&color=000" alt="User">
                 </div>
             </div>
         </header>
@@ -78,7 +78,7 @@
                 </div>
             </section>
             <section class="footer-controls">
-                <button class="wide-btn">📖 Читать Гайд</button>
+                <button class="wide-btn neon-border">📖 Читать Гайд</button>
             </section>
         </main>
 
@@ -92,10 +92,9 @@
 
     <div class="modal-window" id="selectionModal">
         <div class="modal-header">
-            <h2 id="selectionTitle">Выберите режим</h2>
+            <h2 id="selectionTitle" class="brand-font">Выберите режим</h2>
             <div class="close-icon" onclick="closeAllMenus()">✕</div>
         </div>
-
         <div class="mode-grid" id="videoButtons" style="display: none;">
             <div class="mode-card"><div class="mode-icon">👤</div><span>Соло</span></div>
             <div class="mode-card"><div class="mode-icon">🔞</div><span>Порно</span></div>
@@ -103,7 +102,6 @@
             <div class="mode-card"><div class="mode-icon">✍️</div><span>Свой промпт</span></div>
             <div class="mode-card"><div class="mode-icon">📂</div><span>Коллекция</span></div>
         </div>
-
         <div class="mode-grid" id="photoButtons" style="display: none;">
             <div class="mode-card"><div class="mode-icon">👤</div><span>Соло</span></div>
             <div class="mode-card"><div class="mode-icon">🔞</div><span>Порно</span></div>
@@ -115,57 +113,35 @@
 
     <div class="modal-window" id="balanceModal">
         <div class="modal-header">
-            <h2>Пополнение</h2>
+            <h2 class="brand-font">Пополнение</h2>
             <div class="close-icon" onclick="closeAllMenus()">✕</div>
         </div>
         <div class="gems-grid">
-            <div class="gem-card">
-                <div class="gem-amount">50 💎</div><div class="gem-price">399 ₽</div>
-                <div class="first-bonus">Бонус +30 💎</div><button class="buy-btn">Купить</button>
-            </div>
-            <div class="gem-card">
-                <div class="gem-amount">125 💎</div><div class="gem-price">999 ₽</div>
-                <div class="first-bonus">Бонус +75 💎</div><button class="buy-btn">Купить</button>
-            </div>
-            <div class="gem-card popular">
-                <div class="badge-hit">HIT</div>
-                <div class="gem-amount">212 💎</div><div class="gem-price">1699 ₽</div>
-                <div class="first-bonus">Бонус +128 💎</div><button class="buy-btn neon-fill">Купить</button>
-            </div>
-            <div class="gem-card">
-                <div class="gem-amount">375 💎</div><div class="gem-price">2999 ₽</div>
-                <div class="first-bonus">Бонус +225 💎</div><button class="buy-btn">Купить</button>
-            </div>
-            <div class="gem-card">
-                <div class="gem-amount">625 💎</div><div class="gem-price">4999 ₽</div>
-                <div class="first-bonus">Бонус +375 💎</div><button class="buy-btn">Купить</button>
-            </div>
-            <div class="gem-card">
-                <div class="gem-amount">1175 💎</div><div class="gem-price">9399 ₽</div>
-                <div class="first-bonus">Бонус +705 💎</div><button class="buy-btn">Купить</button>
-            </div>
-            <div class="gem-card wide-card">
-                <div class="gem-amount">3000 💎</div><div class="gem-price">15499 ₽</div>
-                <div class="first-bonus">Бонус +1099 💎</div><button class="buy-btn">Купить</button>
-            </div>
+            <div class="gem-card"><div class="gem-amount">50 💎</div><div class="gem-price">399 ₽</div><div class="first-bonus">Бонус +30 💎</div><button class="buy-btn">Купить</button></div>
+            <div class="gem-card"><div class="gem-amount">125 💎</div><div class="gem-price">999 ₽</div><div class="first-bonus">Бонус +75 💎</div><button class="buy-btn">Купить</button></div>
+            <div class="gem-card popular"><div class="badge-hit">HIT</div><div class="gem-amount">212 💎</div><div class="gem-price">1699 ₽</div><div class="first-bonus">Бонус +128 💎</div><button class="buy-btn neon-fill">Купить</button></div>
+            <div class="gem-card"><div class="gem-amount">375 💎</div><div class="gem-price">2999 ₽</div><div class="first-bonus">Бонус +225 💎</div><button class="buy-btn">Купить</button></div>
+            <div class="gem-card"><div class="gem-amount">625 💎</div><div class="gem-price">4999 ₽</div><div class="first-bonus">Бонус +375 💎</div><button class="buy-btn">Купить</button></div>
+            <div class="gem-card"><div class="gem-amount">1175 💎</div><div class="gem-price">9399 ₽</div><div class="first-bonus">Бонус +705 💎</div><button class="buy-btn">Купить</button></div>
+            <div class="gem-card wide-card"><div class="gem-amount">3000 💎</div><div class="gem-price">15499 ₽</div><div class="first-bonus">Бонус +1099 💎</div><button class="buy-btn">Купить</button></div>
         </div>
         <p class="bonus-footer">* Бонусы начисляются только на первый депозит</p>
     </div>
 
     <div class="modal-window" id="planModal">
         <div class="modal-header">
-            <h2>Тарифы</h2>
+            <h2 class="brand-font">Тарифы</h2>
             <div class="close-icon" onclick="closeAllMenus()">✕</div>
         </div>
         <div class="plans-container">
             <div class="plan-card">
-                <div class="plan-header">BASIC</div>
+                <div class="plan-header brand-font">BASIC</div>
                 <ul class="features-list"><li>✅ Стандартная скорость</li><li>✅ Очередь при нагрузке</li><li>❌ HD качество</li></ul>
                 <button class="plan-btn outline">Ваш текущий</button>
             </div>
             <div class="plan-card pro">
                 <div class="badge-hit">BEST</div>
-                <div class="plan-header text-neon">PRO</div>
+                <div class="plan-header brand-font text-neon">PRO</div>
                 <ul class="features-list"><li>🚀 <b>Быстрая генерация</b></li><li>💎 <b>Максимальное качество</b></li><li>✨ Приоритетная очередь</li><li>🛡️ Анонимный режим</li></ul>
                 <button class="plan-btn neon-fill">Выбрать PRO</button>
             </div>
@@ -175,43 +151,10 @@
     <script>
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); document.getElementById('profilePopup').classList.remove('active'); closeModalsOnly(); }
         function toggleProfile() { const popup = document.getElementById('profilePopup'); const overlay = document.getElementById('overlay'); if (popup.classList.contains('active')) { closeAllMenus(); } else { closeAllMenus(); popup.classList.add('active'); overlay.classList.add('active'); } }
-        
-        function openModal(modalId) {
-            closeAllMenus();
-            document.getElementById(modalId).classList.add('active');
-            document.getElementById('overlay').classList.add('active');
-        }
-
-        // ГОЛОВНА ЛОГІКА ДЛЯ ВИБОРУ РЕЖИМУ
-        function openSelection(type) {
-            const videoBtns = document.getElementById('videoButtons');
-            const photoBtns = document.getElementById('photoButtons');
-            const title = document.getElementById('selectionTitle');
-
-            if (type === 'video') {
-                title.innerText = 'Режим для ВИДЕО';
-                videoBtns.style.display = 'grid'; // Показати відео кнопки
-                photoBtns.style.display = 'none'; // Сховати фото кнопки
-            } else {
-                title.innerText = 'Режим для ФОТО';
-                videoBtns.style.display = 'none'; // Сховати відео кнопки
-                photoBtns.style.display = 'grid'; // Показати фото кнопки
-            }
-            openModal('selectionModal');
-        }
-
-        function closeModalsOnly() {
-            document.getElementById('balanceModal').classList.remove('active');
-            document.getElementById('planModal').classList.remove('active');
-            document.getElementById('selectionModal').classList.remove('active');
-        }
-
-        function closeAllMenus() {
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('profilePopup').classList.remove('active');
-            closeModalsOnly();
-            document.getElementById('overlay').classList.remove('active');
-        }
+        function openModal(modalId) { closeAllMenus(); document.getElementById(modalId).classList.add('active'); document.getElementById('overlay').classList.add('active'); }
+        function openSelection(type) { const videoBtns = document.getElementById('videoButtons'); const photoBtns = document.getElementById('photoButtons'); const title = document.getElementById('selectionTitle'); if (type === 'video') { title.innerText = 'Режим для ВИДЕО'; videoBtns.style.display = 'grid'; photoBtns.style.display = 'none'; } else { title.innerText = 'Режим для ФОТО'; videoBtns.style.display = 'none'; photoBtns.style.display = 'grid'; } openModal('selectionModal'); }
+        function closeModalsOnly() { document.getElementById('balanceModal').classList.remove('active'); document.getElementById('planModal').classList.remove('active'); document.getElementById('selectionModal').classList.remove('active'); }
+        function closeAllMenus() { document.getElementById('sidebar').classList.remove('active'); document.getElementById('profilePopup').classList.remove('active'); closeModalsOnly(); document.getElementById('overlay').classList.remove('active'); }
     </script>
 </body>
 </html>
