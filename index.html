@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PhotoNuder | Premium</title>
+    <title>PhotoNuder | NeonCore</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -13,46 +13,17 @@
 
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <span>Photo<span>Nuder</span></span>
+            <span class="brand-font">NEON<span>CORE</span></span>
             <div class="close-btn" onclick="toggleSidebar()">✕</div>
         </div>
         <nav class="sidebar-nav">
-            <a href="#" class="nav-item active"><span class="icon">🔥</span> Новая генерация</a>
+            <a href="#" class="nav-item active"><span class="icon">⚡</span> Новая генерация</a>
             <a href="#" class="nav-item"><span class="icon">📂</span> Мои работы</a>
             <a href="#" class="nav-item"><span class="icon">💎</span> Бонусы</a>
             <div class="divider"></div>
             <a href="#" class="nav-item"><span class="icon">⚙️</span> Настройки</a>
-            <a href="#" class="nav-item"><span class="icon">📄</span> Правила сервиса</a>
+            <a href="#" class="nav-item"><span class="icon">📄</span> Правила</a>
         </nav>
-    </div>
-
-    <div class="profile-popup" id="profilePopup">
-        <div class="popup-header">
-            <div class="user-info-row">
-                <div class="avatar-large">
-                    <img src="https://ui-avatars.com/api/?name=User&background=ff6600&color=fff" alt="User">
-                </div>
-                <div>
-                    <div class="user-name">User #9321</div>
-                    <div class="user-status">Free Account</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="plan-info">
-            <div class="plan-row">
-                <span>Тариф:</span>
-                <span class="plan-badge">BASIC</span>
-            </div>
-            <div class="plan-row">
-                <span>Генераций:</span>
-                <span>0 / 5</span>
-            </div>
-            <div class="progress-bar"><div class="fill" style="width: 10%"></div></div>
-        </div>
-
-        <button class="popup-btn neon-fill" onclick="openModal('planModal')">⚡ Улучшить план</button>
-        <button class="popup-btn outline" onclick="openModal('balanceModal')">💳 Пополнить баланс</button>
     </div>
 
     <div class="app-container" id="appContainer">
@@ -65,14 +36,14 @@
                 </div>
                 <div class="logo">
                     <img src="logo.png" alt="Logo">
-                    <span>Photo<span>Nuder</span></span>
+                    <span class="brand-font">NEON<span>CORE</span></span>
                 </div>
             </div>
             
             <div class="profile-btn" onclick="toggleProfile()">
-                <div class="balance-text">💎 268</div>
+                <div class="balance-text">268 💎</div>
                 <div class="avatar-circle">
-                    <img src="https://ui-avatars.com/api/?name=User&background=333&color=fff" alt="User">
+                    <img src="https://ui-avatars.com/api/?name=User&background=00f3ff&color=000" alt="User">
                 </div>
             </div>
         </header>
@@ -81,73 +52,68 @@
             <section class="hero-grid">
                 <div class="hero-card video-card">
                     <div class="card-bg"></div>
-                    <h1>ВИДЕО</h1>
-                    <div class="card-tag">HOT</div>
+                    <h1>VIDEO</h1>
+                    <div class="card-tag">NEW</div>
                 </div>
                 <div class="hero-card photo-card">
                     <div class="card-bg"></div>
-                    <h1>ФОТО</h1>
+                    <h1>PHOTO</h1>
                 </div>
             </section>
 
             <section class="footer-controls">
-                <button class="wide-btn">📖 Читать Гайд</button>
+                <button class="wide-btn neon-border">📖 Читать Гайд</button>
             </section>
         </main>
 
         <footer class="app-footer">
             <div class="footer-links">
-                <a href="#">О нас</a>
-                <a href="#">Блог</a>
-                <a href="#">Правила</a>
-                <a href="#">Поддержка</a>
+                <a href="#">Support</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
             </div>
-            <div class="footer-copy">
-                © 2026 PhotoNuder AI. All rights reserved.
-            </div>
+            <div class="footer-copy">© 2026 NeonCore AI</div>
         </footer>
+    </div>
+
+    <div class="profile-popup" id="profilePopup">
+        <div class="popup-header">
+            <div class="user-info-row">
+                <div class="avatar-large">
+                    <img src="https://ui-avatars.com/api/?name=User&background=00f3ff&color=000" alt="User">
+                </div>
+                <div>
+                    <div class="user-name">User #9321</div>
+                    <div class="user-status">Basic Plan</div>
+                </div>
+            </div>
+        </div>
+        <div class="plan-info">
+            <div class="plan-row"><span>Баланс:</span> <span class="plan-badge">268 💎</span></div>
+            <div class="progress-bar"><div class="fill" style="width: 30%"></div></div>
+        </div>
+        <button class="popup-btn neon-fill" onclick="openModal('planModal')">UPGRADE PLAN</button>
+        <button class="popup-btn outline" onclick="openModal('balanceModal')">DEPOSIT</button>
     </div>
 
     <div class="modal-window" id="balanceModal">
         <div class="modal-header">
-            <h2>Магазин кристаллов</h2>
+            <h2>SHOP</h2>
             <div class="close-icon" onclick="closeAllMenus()">✕</div>
         </div>
         <div class="gems-grid">
             <div class="gem-card">
                 <div class="gem-amount">50 💎</div>
-                <div class="gem-bonus text-green">+30 💎 бонус</div>
                 <button class="buy-btn">399 ₽</button>
             </div>
-            <div class="gem-card">
-                <div class="gem-amount">125 💎</div>
-                <div class="gem-bonus text-green">+75 💎 бонус</div>
-                <button class="buy-btn">999 ₽</button>
-            </div>
             <div class="gem-card popular">
-                <div class="badge-hit">HOT</div>
+                <div class="badge-hit">HIT</div>
                 <div class="gem-amount">212 💎</div>
-                <div class="gem-bonus text-green">+128 💎 бонус на первое пополнение</div>
                 <button class="buy-btn neon-fill">1699 ₽</button>
-            </div>
-            <div class="gem-card">
-                <div class="gem-amount">375 💎</div>
-                <div class="gem-bonus text-green">+225 💎 бонус на первое пополнение</div>
-                <button class="buy-btn">2999 ₽</button>
-            </div>
-            <div class="gem-card">
-                <div class="gem-amount">625 💎</div>
-                <div class="gem-bonus text-green">+375 💎 бонус на первое пополнение</div>
-                <button class="buy-btn">4999 ₽</button>
-            </div>
-            <div class="gem-card">
-                <div class="gem-amount">1175 💎</div>
-                <div class="gem-bonus text-green">+705 💎 бонус на первое пополнение</div>
-                <button class="buy-btn">9399 ₽</button>
             </div>
             <div class="gem-card wide-card">
                 <div class="gem-amount">3000 💎</div>
-                <div class="gem-bonus text-green">+1099 💎 бонус на первое пополнение</div>
+                <div class="gem-bonus">+1099 BONUS</div>
                 <button class="buy-btn">15499 ₽</button>
             </div>
         </div>
@@ -155,37 +121,20 @@
 
     <div class="modal-window" id="planModal">
         <div class="modal-header">
-            <h2>Тарифный план</h2>
+            <h2>PLANS</h2>
             <div class="close-icon" onclick="closeAllMenus()">✕</div>
         </div>
         <div class="plans-container">
             <div class="plan-card">
                 <div class="plan-header">BASIC</div>
-                <ul class="features-list">
-                    <li>✅ Стандартная скорость</li>
-                    <li>✅ Очередь при нагрузке</li>
-                    <li>❌ HD качество</li>
-                </ul>
-                <button class="plan-btn outline">Ваш текущий</button>
+                <ul class="features-list"><li>Low Speed</li><li>SD Quality</li></ul>
+                <button class="plan-btn outline">Current</button>
             </div>
             <div class="plan-card pro">
-                <div class="badge-hit">POPULAR</div>
-                <div class="plan-header text-neon">PRO</div>
-                <ul class="features-list">
-                    <li>🚀 <b>Быстрая генерация</b></li>
-                    <li>💎 <b>Высокое качество</b></li>
-                    <li>✨ Приоритетная очередь</li>
-                </ul>
-                <button class="plan-btn neon-fill">Выбрать PRO</button>
-            </div>
-            <div class="plan-card">
-                <div class="plan-header text-gold">SUPER</div>
-                <ul class="features-list">
-                    <li>⚡ <b>Моментально</b></li>
-                    <li>🌟 <b>4K Ultra HD</b></li>
-                    <li>👑 Персональная поддержка</li>
-                </ul>
-                <button class="plan-btn outline">Выбрать SUPER</button>
+                <div class="badge-hit">PRO</div>
+                <div class="plan-header text-neon">PREMIUM</div>
+                <ul class="features-list"><li>⚡ Fast Speed</li><li>💎 HD Quality</li></ul>
+                <button class="plan-btn neon-fill">SELECT</button>
             </div>
         </div>
     </div>
@@ -197,30 +146,21 @@
             document.getElementById('profilePopup').classList.remove('active');
             closeModalsOnly();
         }
-
         function toggleProfile() {
             const popup = document.getElementById('profilePopup');
             const overlay = document.getElementById('overlay');
-            if (popup.classList.contains('active')) {
-                closeAllMenus();
-            } else {
-                closeAllMenus();
-                popup.classList.add('active');
-                overlay.classList.add('active');
-            }
+            if (popup.classList.contains('active')) { closeAllMenus(); } 
+            else { closeAllMenus(); popup.classList.add('active'); overlay.classList.add('active'); }
         }
-
         function openModal(modalId) {
-            document.getElementById('profilePopup').classList.remove('active'); // Закрити профіль
-            document.getElementById(modalId).classList.add('active'); // Відкрити модалку
-            document.getElementById('overlay').classList.add('active'); // Затемнити фон
+            document.getElementById('profilePopup').classList.remove('active');
+            document.getElementById(modalId).classList.add('active');
+            document.getElementById('overlay').classList.add('active');
         }
-
         function closeModalsOnly() {
             document.getElementById('balanceModal').classList.remove('active');
             document.getElementById('planModal').classList.remove('active');
         }
-
         function closeAllMenus() {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('profilePopup').classList.remove('active');
