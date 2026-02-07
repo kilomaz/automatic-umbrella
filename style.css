@@ -1,13 +1,18 @@
 :root {
-    --bg: #050a14; /* Глибокий темний фон */
-    --card-dark: #0c1424;
-    --sidebar-bg: #0a0f1d;
-    --neon: #00f3ff; /* ЕЛЕКТРИЧНИЙ СИНІЙ НЕОН */
-    --neon-dim: rgba(0, 243, 255, 0.15);
+    /* ГЛИБОКИЙ ТЕМНИЙ КОЛІР (Майже чорний, з відтінком безодні) */
+    --bg: #020408; 
+    --card-dark: #080c14; /* Картки ледь світліші за фон */
+    --sidebar-bg: #05080f;
+    
+    /* НЕОН (Трішки холодніший) */
+    --neon: #00f3ff; 
+    --neon-dim: rgba(0, 243, 255, 0.08); /* Дуже слабке світіння фону */
+    --neon-glow: rgba(0, 243, 255, 0.4); /* Для активних елементів */
+    
     --white: #ffffff;
+    --text-gray: #94a3b8; /* Сіро-блакитний текст */
+    --border-color: rgba(0, 243, 255, 0.15); /* Дуже тонкі рамки */
     --green: #00ff9d;
-    --text-gray: #8899a6;
-    --border-color: rgba(0, 243, 255, 0.25);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,29 +24,190 @@ body {
     display: flex; justify-content: center;
     min-height: 100vh; overflow-x: hidden;
 
-    /* --- НОВИЙ ФОНОВИЙ ГРАДІЄНТ --- */
-    /* Створює синє світіння, що піднімається знизу, як ти просив */
-    background: radial-gradient(
-        ellipse at 50% 90%,          /* Центр світіння внизу по центру */
-        rgba(0, 80, 255, 0.35) 0%,   /* Глибокий синій в центрі */
-        rgba(0, 243, 255, 0.15) 30%, /* Перехід в неоновий блакитний */
-        var(--bg) 70%                /* Зливається з темним фоном */
-    );
-    background-attachment: fixed; /* Фон зафіксовано при скролі */
+    /* ФОН: Глибока темрява з легким світінням знизу */
+    background-image: 
+        /* Світіння тільки знизу (Underglow) */
+        radial-gradient(circle at 50% 100%, rgba(0, 80, 255, 0.2) 0%, transparent 50%),
+        /* Текстура шуму або сітки (ледь помітна) */
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
 }
 
-/* Шрифт для заголовків */
-.brand-font { font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+/* КІБЕР-ШРИФТ */
+.brand-font { 
+    font-family: 'Orbitron', sans-serif; 
+    letter-spacing: 2px; /* Розтягуємо літери для стилю */
+    text-transform: uppercase;
+}
 
 .app-container { width: 100%; max-width: 1000px; padding: 15px; display: flex; flex-direction: column; min-height: 100vh; }
-.main-content { flex: 1; }
+.main-content { flex: 1; display: flex; flex-direction: column; justify-content: center; } /* Центруємо контент по вертикалі */
 
 /* HEADER */
 header { display: flex; justify-content: space-between; align-items: center; padding: 15px 0 25px 0; }
 .header-left { display: flex; align-items: center; gap: 15px; }
-.menu-btn { display: flex; flex-direction: column; gap: 6px; cursor: pointer; padding: 5px; }
-.bar { width: 24px; height: 3px; background-color: var(--neon); border-radius: 2px; box-shadow: 0 0 8px var(--neon); }
+.menu-btn { display: flex; flex-direction: column; gap: 6px; cursor: pointer; padding: 5px; opacity: 0.8; transition: 0.2s; }
+.menu-btn:hover { opacity: 1; }
+.bar { width: 24px; height: 2px; background-color: var(--white); border-radius: 2px; box-shadow: 0 0 5px var(--neon); }
 
-.logo { display: flex; align-items: center; gap: 8px; }
-/* ФІЛЬТР: Змінює помаранчеве лого на синє */
-.logo img { height: 32px; filter: hue-rotate(180deg) brightness(1.5) drop-shadow(0 0 5px var(--neon)); }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { height: 28px; filter: hue-rotate(180deg) brightness(2) drop-shadow(0 0 8px var(--neon)); }
+.logo span { font-weight: 800; font-size: 1.2rem; letter-spacing: 1px; }
+.logo span span { color: var(--neon); text-shadow: 0 0 15px var(--neon); }
+
+.profile-btn {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(0, 0, 0, 0.3); padding: 5px 5px 5px 15px; border-radius: 50px;
+    border: 1px solid var(--border-color); cursor: pointer; transition: 0.3s;
+}
+.profile-btn:hover { border-color: var(--neon); box-shadow: 0 0 15px var(--neon-dim); }
+.balance-text { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--neon); letter-spacing: 1px; }
+.avatar-circle { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 1px solid var(--neon); box-shadow: 0 0 5px var(--neon); }
+.avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+/* HERO CARDS */
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+.hero-card {
+    background: var(--card-dark); border-radius: 20px; aspect-ratio: 1 / 1;
+    display: flex; align-items: center; justify-content: center; position: relative;
+    cursor: pointer; overflow: hidden; border: 1px solid var(--border-color);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.8); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+/* Ефект наведення: картка трохи спливає і світиться */
+.hero-card:active { transform: scale(0.98); }
+.hero-card:hover { border-color: var(--neon); box-shadow: 0 0 30px rgba(0, 243, 255, 0.15); }
+
+.card-bg { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background: radial-gradient(circle at center, rgba(0, 243, 255, 0.05), transparent 70%); 
+    z-index: 0; 
+}
+
+.hero-card h1 {
+    font-family: 'Orbitron', sans-serif; font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 900; z-index: 1;
+    color: var(--white); text-shadow: 0 0 15px var(--neon-glow); letter-spacing: 2px;
+}
+
+.card-tag {
+    position: absolute; top: 10px; right: 10px; background: var(--neon); color: #000;
+    font-size: 0.6rem; font-weight: 900; padding: 3px 8px; border-radius: 4px; z-index: 2;
+    box-shadow: 0 0 10px var(--neon); font-family: 'Orbitron', sans-serif; letter-spacing: 1px;
+}
+
+.wide-btn {
+    width: 100%; background: rgba(255,255,255,0.02); color: var(--text-gray); border: 1px solid var(--border-color);
+    padding: 16px 0; border-radius: 12px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.3s;
+    font-family: 'Inter', sans-serif; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.wide-btn:hover { 
+    border-color: var(--neon); color: var(--white); 
+    box-shadow: 0 0 20px var(--neon-dim); background: rgba(0, 243, 255, 0.05);
+}
+
+/* MODE SELECTION GRID */
+.mode-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+.mode-card {
+    background: var(--card-dark); border: 1px solid var(--border-color); border-radius: 14px;
+    padding: 20px 10px; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; cursor: pointer; transition: 0.2s; aspect-ratio: 1.6/1;
+}
+.mode-card:hover { border-color: var(--neon); background: var(--neon-dim); transform: translateY(-3px); }
+.mode-icon { font-size: 1.8rem; margin-bottom: 10px; filter: drop-shadow(0 0 5px var(--neon)); }
+.mode-card span { font-size: 0.8rem; color: var(--white); font-weight: 600; text-align: center; letter-spacing: 0.5px; text-transform: uppercase; }
+
+/* MODALS */
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 8, 0.95); backdrop-filter: blur(5px); z-index: 90; display: none; }
+.overlay.active { display: block; }
+
+.modal-window {
+    position: fixed; bottom: 0; left: 0; width: 100%; background: #0b0f19;
+    border-top-left-radius: 20px; border-top-right-radius: 20px;
+    padding: 25px 20px 40px 20px; z-index: 100; max-height: 85vh; overflow-y: auto;
+    border-top: 1px solid var(--neon); display: none; box-shadow: 0 -10px 50px rgba(0, 243, 255, 0.1);
+}
+.modal-window.active { display: block; animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.modal-header h2 { color: var(--white); text-shadow: 0 0 10px rgba(255,255,255,0.3); font-family: 'Orbitron', sans-serif; font-size: 1.2rem; letter-spacing: 1px; }
+.close-icon { color: var(--text-gray); cursor: pointer; font-size: 1.2rem; transition: 0.2s; } .close-icon:hover { color: var(--white); }
+
+/* SHOP */
+.gems-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gem-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; text-align: center; position: relative; }
+.gem-card.popular { border-color: var(--neon); background: rgba(0, 243, 255, 0.03); box-shadow: inset 0 0 20px rgba(0, 243, 255, 0.05); }
+.wide-card { grid-column: span 2; }
+.badge-hit { 
+    position: absolute; top: -8px; right: -8px; background: var(--neon); color: #000; 
+    font-size: 0.6rem; font-weight: 900; padding: 2px 6px; border-radius: 4px; 
+    box-shadow: 0 0 10px var(--neon); font-family: 'Orbitron', sans-serif; 
+}
+.gem-amount { font-size: 1.2rem; font-weight: 800; color: var(--white); display: block; margin-bottom: 4px; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+.gem-price { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 8px; font-weight: 500; }
+.first-bonus { 
+    color: var(--green); font-size: 0.65rem; font-weight: 700; 
+    background: rgba(0, 255, 157, 0.08); padding: 3px 6px; border-radius: 4px; 
+    display: inline-block; margin-bottom: 10px; border: 1px solid rgba(0, 255, 157, 0.2); 
+}
+.bonus-footer { text-align: center; color: var(--text-gray); font-size: 0.7rem; margin-top: 20px; opacity: 0.6; }
+
+.buy-btn { 
+    width: 100%; padding: 10px; border-radius: 8px; background: transparent; color: var(--white); 
+    border: 1px solid var(--border-color); cursor: pointer; font-weight: 700; font-family: 'Orbitron', sans-serif; 
+    font-size: 0.8rem; transition: 0.2s; letter-spacing: 1px;
+}
+.buy-btn:hover { border-color: var(--neon); color: var(--neon); background: var(--neon-dim); }
+.neon-fill { background: var(--neon); color: #000; border: none; box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }
+.neon-fill:hover { background: var(--white); box-shadow: 0 0 25px var(--neon); }
+
+/* PLANS */
+.plans-container { display: flex; flex-direction: column; gap: 15px; }
+.plan-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; position: relative; }
+.plan-card.pro { border-color: var(--neon); background: linear-gradient(180deg, rgba(0, 243, 255, 0.08) 0%, transparent 100%); }
+.plan-header { font-size: 1.4rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 1px; font-family: 'Orbitron', sans-serif; }
+.text-neon { color: var(--neon); text-shadow: 0 0 15px var(--neon-glow); }
+.features-list { list-style: none; margin-bottom: 20px; }
+.features-list li { margin-bottom: 10px; font-size: 0.9rem; color: var(--text-gray); display: flex; align-items: center; gap: 8px; }
+.plan-btn { width: 100%; padding: 12px; border-radius: 8px; font-weight: 800; cursor: pointer; font-family: 'Orbitron', sans-serif; transition: 0.2s; letter-spacing: 1px; }
+.outline { background: transparent; border: 1px solid #333; color: var(--text-gray); }
+.outline:hover { border-color: var(--white); color: var(--white); }
+
+/* PROFILE POPUP */
+.profile-popup { 
+    position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20px); 
+    width: 90%; max-width: 320px; background: #0b0f19; border: 1px solid var(--border-color); 
+    border-radius: 16px; padding: 20px; z-index: 95; display: none; 
+    box-shadow: 0 0 40px rgba(0,0,0,0.8); 
+}
+.profile-popup.active { display: block; }
+.popup-btn { width: 100%; padding: 12px; border-radius: 8px; font-weight: 800; cursor: pointer; margin-bottom: 10px; border: none; font-family: 'Orbitron', sans-serif; transition: 0.2s; letter-spacing: 0.5px; }
+.plan-info { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); }
+.plan-row { display: flex; justify-content: space-between; margin-bottom: 5px; color: var(--text-gray); font-size: 0.85rem; font-weight: 600; }
+.plan-badge { color: var(--neon); text-shadow: 0 0 5px var(--neon); font-family: 'Orbitron', sans-serif; }
+.progress-bar { width: 100%; height: 4px; background: #1a2a4a; margin-top: 10px; border-radius: 2px; } 
+.fill { height: 100%; background: var(--neon); box-shadow: 0 0 8px var(--neon); border-radius: 2px; }
+
+/* SIDEBAR & FOOTER */
+.sidebar { position: fixed; top: 0; left: 0; width: 280px; height: 100%; background: #080b14; z-index: 100; transform: translateX(-100%); transition: 0.3s; border-right: 1px solid var(--border-color); padding: 25px; }
+.sidebar.active { transform: translateX(0); }
+.sidebar-header { display: flex; justify-content: space-between; margin-bottom: 40px; font-weight: 900; font-size: 1.4rem; color: var(--white); }
+.nav-item { text-decoration: none; color: var(--text-gray); font-weight: 600; font-size: 1rem; padding: 14px 0; display: flex; gap: 15px; transition: 0.2s; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.nav-item.active, .nav-item:hover { color: var(--white); text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+.divider { height: 1px; background: rgba(255,255,255,0.05); margin: 20px 0; }
+.app-footer { margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border-color); text-align: center; }
+.footer-links a { color: var(--text-gray); text-decoration: none; margin: 0 10px; font-size: 0.8rem; transition: 0.2s; }
+.footer-links a:hover { color: var(--neon); }
+.footer-copy { color: #445566; font-size: 0.7rem; margin-top: 10px; }
+
+/* DESKTOP FIX */
+@media (min-width: 800px) {
+    .modal-window { bottom: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; border-radius: 20px; animation: none; border: 1px solid var(--border-color); box-shadow: 0 0 60px rgba(0, 0, 0, 0.8); }
+    .modal-window.active { display: block; animation: fadeIn 0.2s forwards; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hero-grid { grid-template-columns: 1fr 1fr; } .hero-card { aspect-ratio: 16 / 10; }
+    .gems-grid { grid-template-columns: repeat(3, 1fr); } .wide-card { grid-column: auto; }
+    .plans-container { flex-direction: row; }
+}
