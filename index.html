@@ -8,14 +8,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span>Photo<span>Nuder</span></span>
+            <div class="close-btn" onclick="toggleMenu()">✕</div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">
+                <span class="icon">🔥</span> Новая генерация
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">📂</span> Мои работы
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">❤️</span> Избранное
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">💎</span> PRO Подписка
+            </a>
+            <div class="divider"></div>
+            <a href="#" class="nav-item">
+                <span class="icon">⚙️</span> Настройки
+            </a>
+            <a href="#" class="nav-item">
+                <span class="icon">💬</span> Поддержка
+            </a>
+        </nav>
+    </div>
+
     <div class="app-container">
         <header>
-            <div class="logo">
-                <img src="logo.png" alt="Logo">
-                <span>Photo<span>Nuder</span></span>
+            <div class="header-left">
+                <div class="menu-btn" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="logo">
+                    <img src="logo.png" alt="Logo">
+                    <span>Photo<span>Nuder</span></span>
+                </div>
             </div>
+            
             <div class="header-right">
-                <div class="balance">💎 268 <span>+</span></div>
+                <div class="balance">💎 268</div>
             </div>
         </header>
 
@@ -23,6 +62,7 @@
             <section class="hero-grid">
                 <div class="hero-card video-card">
                     <h1>ВИДЕО</h1>
+                    <div class="card-tag">HOT</div>
                 </div>
                 <div class="hero-card photo-card">
                     <h1>ФОТО</h1>
@@ -35,5 +75,14 @@
             </section>
         </main>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
