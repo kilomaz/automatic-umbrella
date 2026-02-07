@@ -4,6 +4,7 @@
     --sidebar-bg: #111111;
     --neon: #ff6600;
     --white: #ffffff;
+    --popup-bg: #1a1a1a;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,14 +16,13 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    overflow-x: hidden; /* Щоб не було горизонтальної прокрутки */
+    overflow-x: hidden;
 }
 
 .app-container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1000px;
     padding: 15px;
-    transition: 0.3s; /* Плавність */
 }
 
 /* --- HEADER --- */
@@ -30,7 +30,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0 25px 0;
+    padding: 10px 0 30px 0;
+    position: relative; /* Для позиціонування попапу */
+    z-index: 50;
 }
 
 .header-left {
@@ -39,37 +41,81 @@ header {
     gap: 15px;
 }
 
-/* Бургер меню іконка */
 .menu-btn {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 5px;
+    display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px;
 }
 .bar {
-    width: 24px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 2px;
-    transition: 0.3s;
+    width: 22px; height: 2px; background-color: #fff; border-radius: 2px;
 }
-.menu-btn:hover .bar { background-color: var(--neon); }
 
 .logo { display: flex; align-items: center; gap: 8px; }
-.logo img { height: 32px; filter: drop-shadow(0 0 5px var(--neon)); }
-.logo span { font-weight: 900; font-size: 1.3rem; }
+.logo img { height: 30px; filter: drop-shadow(0 0 5px var(--neon)); }
+.logo span { font-weight: 900; font-size: 1.2rem; }
 .logo span span { color: var(--neon); }
 
-.balance {
-    background: #1e1e1e;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-weight: 700;
-    border: 1px solid #333;
-    font-size: 0.9rem;
-    color: var(--neon);
+/* --- ПРОФІЛЬ І ПОПАП --- */
+.profile-wrapper {
+    position: relative;
 }
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1e1e1e;
+    padding: 5px 5px 5px 15px;
+    border-radius: 30px;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.profile-btn:hover { border-color: var(--neon); }
+
+.balance-text { font-weight: 700; font-size: 0.9rem; color: var(--neon); }
+
+.avatar-circle {
+    width: 32px; height: 32px; border-radius: 50%; overflow: hidden;
+    border: 1px solid #444;
+}
+.avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Випадаюче вікно */
+.profile-popup {
+    position: absolute;
+    top: 50px; right: 0;
+    width: 260px;
+    background: var(--popup-bg);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.profile-popup.active {
+    opacity: 1; visibility: visible; transform: translateY(0);
+}
+
+.popup-header {
+    border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px;
+}
+.user-name { font-weight: 800; font-size: 1rem; }
+.user-status { font-size: 0.8rem; color: #888; margin-top: 2px; }
+
+.plan-info { background: #111; border-radius: 8px; padding: 10px; margin-bottom: 15px; }
+.plan-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; }
+.plan-row:last-child { margin-bottom: 0; }
+.plan-badge { color: var(--neon); font-weight: 700; }
+
+.popup-btn {
+    width: 100%; padding: 10px; border-radius: 8px; 
+    font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-bottom: 8px;
+    border: none; transition: 0.2s;
+}
+.neon-fill { background: var(--neon); color: #000; }
+.neon-fill:hover { background: #ff8533; }
+.outline { background: transparent; border: 1px solid #444; color: #fff; }
+.outline:hover { border-color: #fff; }
 
 /* --- MAIN CONTENT --- */
 .hero-grid {
@@ -81,8 +127,9 @@ header {
 
 .hero-card {
     background: var(--card);
-    border-radius: 25px;
-    aspect-ratio: 1 / 1.15;
+    border-radius: 20px;
+    /* Зменшив висоту, тепер вони більш "кнопкоподібні" */
+    aspect-ratio: 16 / 10; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,125 +141,55 @@ header {
     transition: 0.3s;
 }
 
-.hero-card:hover {
-    border-color: var(--neon);
-    box-shadow: 0 0 20px rgba(255, 102, 0, 0.15);
-}
-
+.hero-card:hover { border-color: var(--neon); box-shadow: 0 0 15px rgba(255, 102, 0, 0.15); }
 .hero-card h1 {
-    font-size: clamp(2rem, 6vw, 4rem);
-    font-weight: 900;
-    color: var(--neon);
-    text-transform: uppercase;
-    z-index: 1;
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Менший шрифт */
+    font-weight: 900; color: var(--neon); text-transform: uppercase;
 }
 
 .card-tag {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--neon);
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: 900;
-    padding: 4px 8px;
-    border-radius: 6px;
-    box-shadow: 0 0 10px var(--neon);
+    position: absolute; top: 10px; right: 10px;
+    background: var(--neon); color: #000; font-size: 0.6rem;
+    font-weight: 900; padding: 3px 6px; border-radius: 4px;
 }
 
-/* Нижні кнопки */
-.footer-controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+.footer-controls { width: 100%; }
+.wide-btn {
+    width: 100%; background: #1a1a1a; color: #fff;
+    border: 1px solid #333; padding: 15px 0; border-radius: 12px;
+    font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.2s;
 }
+.wide-btn:hover { background: #222; border-color: #555; }
 
-.small-btn {
-    background: #1a1a1a;
-    color: #fff;
-    border: 1px solid #333;
-    padding: 18px 0;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 1rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: 0.2s;
-}
-.neon-btn { border-color: var(--neon); color: var(--neon); }
-.small-btn:hover { background: #222; }
-
-/* --- SIDEBAR MENU (БОКОВЕ МЕНЮ) --- */
+/* --- SIDEBAR --- */
 .overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    z-index: 99;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    backdrop-filter: blur(3px);
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7); z-index: 99;
+    opacity: 0; visibility: hidden; transition: 0.3s; backdrop-filter: blur(2px);
 }
 .overlay.active { opacity: 1; visibility: visible; }
 
 .sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    width: 280px;
-    height: 100%;
-    background: var(--sidebar-bg);
-    z-index: 100;
-    transform: translateX(-100%); /* Сховано зліва */
-    transition: 0.3s ease-in-out;
-    border-right: 1px solid #333;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+    position: fixed; top: 0; left: 0; width: 280px; height: 100%;
+    background: var(--sidebar-bg); z-index: 100;
+    transform: translateX(-100%); transition: 0.3s ease-in-out;
+    border-right: 1px solid #333; padding: 20px;
 }
 .sidebar.active { transform: translateX(0); }
 
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
 .sidebar-header span { font-weight: 900; font-size: 1.4rem; }
 .sidebar-header span span { color: var(--neon); }
-
 .close-btn { font-size: 1.5rem; cursor: pointer; color: #888; }
-.close-btn:hover { color: #fff; }
-
-.sidebar-nav { display: flex; flex-direction: column; gap: 15px; }
 
 .nav-item {
-    text-decoration: none;
-    color: #ccc;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 12px 15px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    transition: 0.2s;
+    text-decoration: none; color: #ccc; font-weight: 700; font-size: 1rem;
+    padding: 12px 15px; border-radius: 10px; display: flex; align-items: center;
+    gap: 15px; transition: 0.2s; margin-bottom: 5px;
 }
-.nav-item .icon { font-size: 1.3rem; }
+.nav-item:hover, .nav-item.active { background: #222; color: var(--neon); }
+.divider { height: 1px; background: #333; margin: 15px 0; }
 
-.nav-item:hover, .nav-item.active {
-    background: #222;
-    color: var(--neon);
-}
-
-.divider {
-    height: 1px;
-    background: #333;
-    margin: 10px 0;
-}
-
-/* --- MOBILE ADAPT --- */
 @media (max-width: 600px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-card { aspect-ratio: 16 / 10; }
+    .hero-card { aspect-ratio: 16 / 9; }
 }
