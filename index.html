@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PhotoNuder | Premium</title>
+    <title>PhotoNuder | AI</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
             <a href="#" class="nav-item"><span class="icon">💎</span> Бонусы</a>
             <div class="divider"></div>
             <a href="#" class="nav-item"><span class="icon">⚙️</span> Настройки</a>
-            <a href="#" class="nav-item"><span class="icon">📄</span> Правила сервиса</a>
+            <a href="#" class="nav-item"><span class="icon">📄</span> Правила</a>
         </nav>
     </div>
 
@@ -40,8 +40,7 @@
         </div>
         <div class="plan-info">
             <div class="plan-row"><span>Тариф:</span><span class="plan-badge">BASIC</span></div>
-            <div class="plan-row"><span>Генераций:</span><span>0 / 5</span></div>
-            <div class="progress-bar"><div class="fill" style="width: 10%"></div></div>
+            <div class="progress-bar"><div class="fill" style="width: 5%"></div></div>
         </div>
         <button class="popup-btn neon-fill" onclick="openModal('planModal')">⚡ Улучшить план</button>
         <button class="popup-btn outline" onclick="openModal('balanceModal')">💳 Пополнить баланс</button>
@@ -59,7 +58,7 @@
                 </div>
             </div>
             <div class="profile-btn" onclick="toggleProfile()">
-                <div class="balance-text">💎 268</div>
+                <div class="balance-text">💎 0</div>
                 <div class="avatar-circle">
                     <img src="https://ui-avatars.com/api/?name=User&background=333&color=fff" alt="User">
                 </div>
@@ -68,12 +67,12 @@
 
         <main class="main-content">
             <section class="hero-grid">
-                <div class="hero-card video-card">
+                <div class="hero-card video-card" onclick="openPoseSelection('ВИДЕО')">
                     <div class="card-bg"></div>
                     <h1>ВИДЕО</h1>
                     <div class="card-tag">HOT</div>
                 </div>
-                <div class="hero-card photo-card">
+                <div class="hero-card photo-card" onclick="openPoseSelection('ФОТО')">
                     <div class="card-bg"></div>
                     <h1>ФОТО</h1>
                 </div>
@@ -85,73 +84,124 @@
 
         <footer class="app-footer">
             <div class="footer-links">
-                <a href="#">О нас</a><a href="#">Блог</a><a href="#">Правила</a><a href="#">Поддержка</a>
+                <a href="#">О нас</a><a href="#">Правила</a><a href="#">Поддержка</a>
             </div>
-            <div class="footer-copy">© 2026 PhotoNuder AI. All rights reserved.</div>
+            <div class="footer-copy">© 2026 PhotoNuder AI</div>
         </footer>
+    </div>
+
+    <div class="modal-window" id="poseModal">
+        <div class="modal-header">
+            <h2 id="poseTitle">Выбор позы</h2>
+            <div class="close-icon" onclick="closeAllMenus()">✕</div>
+        </div>
+        <div class="pose-grid">
+            <div class="pose-card selected">
+                <div class="pose-img">🧍‍♀️</div>
+                <span>Classic</span>
+            </div>
+            <div class="pose-card">
+                <div class="pose-img">🍑</div>
+                <span>Back View</span>
+            </div>
+            <div class="pose-card">
+                <div class="pose-img">🧎‍♀️</div>
+                <span>Knees</span>
+            </div>
+            <div class="pose-card">
+                <div class="pose-img">🛌</div>
+                <span>Lying</span>
+            </div>
+            <div class="pose-card">
+                <div class="pose-img">💃</div>
+                <span>Selfie</span>
+            </div>
+            <div class="pose-card">
+                <div class="pose-img">📸</div>
+                <span>Mirror</span>
+            </div>
+        </div>
+        <button class="buy-btn neon-fill" style="margin-top: 20px;">ПРОДОЛЖИТЬ</button>
     </div>
 
     <div class="modal-window" id="balanceModal">
         <div class="modal-header">
-            <h2>Магазин кристаллов</h2>
+            <h2>Пополнение</h2>
             <div class="close-icon" onclick="closeAllMenus()">✕</div>
         </div>
         <div class="gems-grid">
             <div class="gem-card">
                 <div class="gem-amount">50 💎</div>
-                <div class="gem-bonus text-green">+30 💎 бонус</div>
-                <p class="bonus-note">Бонус к первому пополнению</p>
-                <button class="buy-btn">399 ₽</button>
+                <div class="gem-price">399 ₽</div>
+                <div class="first-bonus">Бонус +30 💎</div>
+                <button class="buy-btn">Купить</button>
             </div>
             <div class="gem-card">
                 <div class="gem-amount">125 💎</div>
-                <div class="gem-bonus text-green">+75 💎 бонус</div>
-                <p class="bonus-note">Бонус к первому пополнению</p>
-                <button class="buy-btn">999 ₽</button>
+                <div class="gem-price">999 ₽</div>
+                <div class="first-bonus">Бонус +75 💎</div>
+                <button class="buy-btn">Купить</button>
             </div>
             <div class="gem-card popular">
                 <div class="badge-hit">HIT</div>
                 <div class="gem-amount">212 💎</div>
-                <div class="gem-bonus text-green">+128 💎 бонус</div>
-                <p class="bonus-note">Бонус к первому пополнению</p>
-                <button class="buy-btn neon-fill">1699 ₽</button>
+                <div class="gem-price">1699 ₽</div>
+                <div class="first-bonus">Бонус +128 💎</div>
+                <button class="buy-btn neon-fill">Купить</button>
             </div>
             <div class="gem-card">
                 <div class="gem-amount">375 💎</div>
-                <div class="gem-bonus text-green">+225 💎 бонус</div>
-                <p class="bonus-note">Бонус к первому пополнению</p>
-                <button class="buy-btn">2999 ₽</button>
+                <div class="gem-price">2999 ₽</div>
+                <div class="first-bonus">Бонус +225 💎</div>
+                <button class="buy-btn">Купить</button>
+            </div>
+            <div class="gem-card">
+                <div class="gem-amount">625 💎</div>
+                <div class="gem-price">4999 ₽</div>
+                <div class="first-bonus">Бонус +375 💎</div>
+                <button class="buy-btn">Купить</button>
+            </div>
+            <div class="gem-card">
+                <div class="gem-amount">1175 💎</div>
+                <div class="gem-price">9399 ₽</div>
+                <div class="first-bonus">Бонус +705 💎</div>
+                <button class="buy-btn">Купить</button>
             </div>
             <div class="gem-card wide-card">
                 <div class="gem-amount">3000 💎</div>
-                <div class="gem-bonus text-green">+1099 💎 бонус</div>
-                <p class="bonus-note">Бонус к первому пополнению</p>
-                <button class="buy-btn">15499 ₽</button>
+                <div class="gem-price">15499 ₽</div>
+                <div class="first-bonus">Бонус +1099 💎</div>
+                <button class="buy-btn">Купить</button>
             </div>
         </div>
+        <p class="bonus-footer">* Бонусы начисляются только на первый депозит</p>
     </div>
 
     <div class="modal-window" id="planModal">
         <div class="modal-header">
-            <h2>Тарифный план</h2>
+            <h2>Тарифы</h2>
             <div class="close-icon" onclick="closeAllMenus()">✕</div>
         </div>
         <div class="plans-container">
             <div class="plan-card">
                 <div class="plan-header">BASIC</div>
-                <ul class="features-list"><li>✅ Стандартная скорость</li><li>❌ HD качество</li></ul>
+                <ul class="features-list">
+                    <li>✅ Стандартная скорость</li>
+                    <li>✅ Очередь при нагрузке</li>
+                    <li>❌ HD качество</li>
+                </ul>
                 <button class="plan-btn outline">Ваш текущий</button>
             </div>
             <div class="plan-card pro">
-                <div class="badge-hit">POPULAR</div>
+                <div class="badge-hit">BEST</div>
                 <div class="plan-header text-neon">PRO</div>
-                <ul class="features-list"><li>🚀 <b>Быстрая генерация</b></li><li>💎 <b>Высокое качество</b></li></ul>
+                <ul class="features-list">
+                    <li>🚀 <b>Быстрая генерация</b></li>
+                    <li>💎 <b>Максимальное качество</b></li>
+                    <li>✨ Приоритетная очередь</li>
+                    <li>🛡️ Анонимный режим</li>
+                </ul>
                 <button class="plan-btn neon-fill">Выбрать PRO</button>
-            </div>
-            <div class="plan-card">
-                <div class="plan-header text-gold">SUPER</div>
-                <ul class="features-list"><li>⚡ <b>Моментально</b></li><li>🌟 <b>4K Ultra HD</b></li></ul>
-                <button class="plan-btn outline">Выбрать SUPER</button>
             </div>
         </div>
     </div>
@@ -159,9 +209,30 @@
     <script>
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); document.getElementById('profilePopup').classList.remove('active'); closeModalsOnly(); }
         function toggleProfile() { const popup = document.getElementById('profilePopup'); const overlay = document.getElementById('overlay'); if (popup.classList.contains('active')) { closeAllMenus(); } else { closeAllMenus(); popup.classList.add('active'); overlay.classList.add('active'); } }
-        function openModal(modalId) { document.getElementById('profilePopup').classList.remove('active'); document.getElementById(modalId).classList.add('active'); document.getElementById('overlay').classList.add('active'); }
-        function closeModalsOnly() { document.getElementById('balanceModal').classList.remove('active'); document.getElementById('planModal').classList.remove('active'); }
-        function closeAllMenus() { document.getElementById('sidebar').classList.remove('active'); document.getElementById('profilePopup').classList.remove('active'); document.getElementById('balanceModal').classList.remove('active'); document.getElementById('planModal').classList.remove('active'); document.getElementById('overlay').classList.remove('active'); }
+        
+        function openModal(modalId) {
+            closeAllMenus(); // Спочатку закрити все
+            document.getElementById(modalId).classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function openPoseSelection(type) {
+            document.getElementById('poseTitle').innerText = 'Поза для ' + type;
+            openModal('poseModal');
+        }
+
+        function closeModalsOnly() {
+            document.getElementById('balanceModal').classList.remove('active');
+            document.getElementById('planModal').classList.remove('active');
+            document.getElementById('poseModal').classList.remove('active');
+        }
+
+        function closeAllMenus() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('profilePopup').classList.remove('active');
+            closeModalsOnly();
+            document.getElementById('overlay').classList.remove('active');
+        }
     </script>
 </body>
 </html>
