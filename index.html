@@ -9,12 +9,12 @@
 </head>
 <body>
 
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="overlay" id="overlay" onclick="closeAllMenus()"></div>
 
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <span>Photo<span>Nuder</span></span>
-            <div class="close-btn" onclick="toggleMenu()">✕</div>
+            <div class="close-btn" onclick="toggleSidebar()">✕</div>
         </div>
         <nav class="sidebar-nav">
             <a href="#" class="nav-item active">
@@ -24,10 +24,7 @@
                 <span class="icon">📂</span> Мои работы
             </a>
             <a href="#" class="nav-item">
-                <span class="icon">❤️</span> Избранное
-            </a>
-            <a href="#" class="nav-item">
-                <span class="icon">💎</span> PRO Подписка
+                <span class="icon">❤️</span> Бонусы
             </a>
             <div class="divider"></div>
             <a href="#" class="nav-item">
@@ -42,7 +39,7 @@
     <div class="app-container">
         <header>
             <div class="header-left">
-                <div class="menu-btn" onclick="toggleMenu()">
+                <div class="menu-btn" onclick="toggleSidebar()">
                     <div class="bar"></div>
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -53,8 +50,34 @@
                 </div>
             </div>
             
-            <div class="header-right">
-                <div class="balance">💎 268</div>
+            <div class="profile-wrapper">
+                <div class="profile-btn" onclick="toggleProfile()">
+                    <div class="balance-text">💎 268</div>
+                    <div class="avatar-circle">
+                        <img src="https://ui-avatars.com/api/?name=User&background=333&color=fff" alt="User">
+                    </div>
+                </div>
+
+                <div class="profile-popup" id="profilePopup">
+                    <div class="popup-header">
+                        <div class="user-name">User #9321</div>
+                        <div class="user-status">Free Account</div>
+                    </div>
+                    
+                    <div class="plan-info">
+                        <div class="plan-row">
+                            <span>Тариф:</span>
+                            <span class="plan-badge">BASIC</span>
+                        </div>
+                        <div class="plan-row">
+                            <span>Генераций:</span>
+                            <span>0 / 5</span>
+                        </div>
+                    </div>
+
+                    <button class="popup-btn neon-fill">⚡ Улучшить план</button>
+                    <button class="popup-btn outline">💳 Пополнить баланс</button>
+                </div>
             </div>
         </header>
 
@@ -70,18 +93,28 @@
             </section>
 
             <section class="footer-controls">
-                <button class="small-btn">Гайд</button>
-                <button class="small-btn neon-btn">Бонусы</button>
+                <button class="wide-btn">📖 Читать Гайд</button>
             </section>
         </main>
     </div>
 
     <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+            document.getElementById('profilePopup').classList.remove('active'); // Закрити профіль якщо відкритий
+        }
+
+        function toggleProfile() {
+            document.getElementById('profilePopup').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+            document.getElementById('sidebar').classList.remove('active'); // Закрити меню якщо відкрите
+        }
+
+        function closeAllMenus() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('profilePopup').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
         }
     </script>
 </body>
